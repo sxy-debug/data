@@ -1,0 +1,25 @@
+server:
+  port: 8601
+spring:
+  application:
+    name: cloud-service
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/admin_shop?useUnicode=tru e&characterEncoding=UTF-8&serverTimezone=UTC
+eureka:
+  client:
+    service-url:
+      defaultZone: http://master:8761/eureka,http://slave:8762/eureka
+    fetch-registry: true
+    register-with-eureka: true
+    registry-fetch-interval-seconds: 30
+  instance:
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.fh.entity
